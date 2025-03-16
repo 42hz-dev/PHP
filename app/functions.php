@@ -8,7 +8,7 @@ function dd ($value): void
     die();
 }
 
-function isUrl ($value): string
+function isUrl ($value): ?string
 {
     return $_SERVER['REQUEST_URI'] === $value;
 }

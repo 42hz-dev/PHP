@@ -1,5 +1,5 @@
 <?php
-function dd ($value): void
+function dd($value): void
 {
     echo "<pre>";
     var_dump($value);
@@ -8,7 +8,14 @@ function dd ($value): void
     die();
 }
 
-function isUrl ($value): ?string
+function isUrl($value): ?string
 {
     return $_SERVER['REQUEST_URI'] === $value;
+}
+
+function authorize(bool $condition, int $status = Response::FORBIDDEN): void
+{
+    if (! $condition) {
+        abort($status);
+    }
 }

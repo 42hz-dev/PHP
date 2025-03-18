@@ -1,14 +1,10 @@
 <?php
 
+$routes = require 'routes.php';
+
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-$routes = [
-    '/' => 'controllers/index.php',
-    '/about' => 'controllers/about.php',
-    '/contact' => 'controllers/contact.php',
-];
-
-function routeToController (string $uri, array $routes): void
+function routeToController(string $uri, array $routes): void
 {
     if (array_key_exists($uri, $routes)) {
         require $routes[$uri];
@@ -17,7 +13,7 @@ function routeToController (string $uri, array $routes): void
     }
 }
 
-function abort(int $code = 404): void
+function abort(int $code = Response::NOT_FOUND): void
 {
     http_response_code($code);
 
